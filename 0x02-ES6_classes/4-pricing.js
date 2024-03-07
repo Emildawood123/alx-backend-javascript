@@ -1,26 +1,35 @@
+import Currency from './3-currency';
+
 export default class Pricing {
   constructor(amount, currency) {
+    if (!(currency instanceof Currency)) {
+      throw Error('currency must be a Currency Obect');
+    }
     this._amount = amount;
     this._currency = currency;
   }
 
-  get getAmount() {
+  get amount() {
     return this._amount;
   }
 
-  set setAmount(newAmount) {
+  set amount(newAmount) {
     this._amount = newAmount;
   }
 
-  get getCurrency() {
+  get currency() {
     return this.currency;
   }
 
-  set setCurrency(newCurrency) {
+  set currency(newCurrency) {
     this._currency = newCurrency;
   }
 
   displayFullPrice() {
     return `${this._amount} ${this._currency.displayFullCurrency()}`;
+  }
+
+  static convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
   }
 }
