@@ -4,7 +4,7 @@ export default class HolbertonCourse {
       throw TypeError('Name must be a string');
     }
     if (typeof length !== 'number') {
-      throw TypeError('Name must be a number');
+      throw TypeError('Length must be a number');
     }
     if (typeof students !== 'object') {
       throw TypeError('Students must be a array of strings');
@@ -19,48 +19,41 @@ export default class HolbertonCourse {
     this._students = students;
   }
 
-  get getName() {
+  get name() {
     return this._name;
   }
 
-  set setName(newName) {
+  set name(newName) {
+    if (typeof newName !== 'string') {
+      throw TypeError('Name must be a string');
+    }
     this._name = newName;
   }
 
-  get getLength() {
+  get length() {
     return this._length;
   }
 
-  set setLength(newLength) {
+  set length(newLength) {
     if (typeof newLength !== 'number') {
-      throw TypeError('Name must be a number');
+      throw TypeError('Length must be a number');
     }
     this._name = newLength;
   }
 
-  get getStudents() {
+  get students() {
     return this._students;
   }
 
-  set setStudents(newStudents) {
+  set students(newStudents) {
+    if (typeof newStudents !== 'object') {
+      throw TypeError('Students must be a array of strings');
+    }
+    for (const student of newStudents) {
+      if (typeof student !== 'string') {
+        throw TypeError('Students must be a array of strings');
+      }
+    }
     this._name = newStudents;
   }
-}
-const c1 = new HolbertonCourse("ES6", 1, ["Bob", "Jane"])
-console.log(c1.name);
-c1.name = "Python 101";
-console.log(c1);
-
-try {
-    c1.name = 12;
-} 
-catch(err) {
-    console.log(err);
-}
-
-try {
-    const c2 = new HolbertonCourse("ES6", "1", ["Bob", "Jane"]);
-}
-catch(err) {
-    console.log(err);
 }
