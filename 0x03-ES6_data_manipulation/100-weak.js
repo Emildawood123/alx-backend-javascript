@@ -1,5 +1,5 @@
-export const weakMap = new WeakMap();
-export default function queryAPI(url) {
+const weakMap = new WeakMap();
+function queryAPI(url) {
   let counter = weakMap.get(url) || 0;
   counter += 1;
   weakMap.set(url, counter);
@@ -7,3 +7,4 @@ export default function queryAPI(url) {
     throw Error('Endpoint load is high');
   }
 }
+export { weakMap, queryAPI };
