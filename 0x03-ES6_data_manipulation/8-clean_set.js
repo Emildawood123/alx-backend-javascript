@@ -8,5 +8,8 @@ export default function cleanSet(set, startString) {
       res.push(newItem);
     }
   }
+  if (res.length === 0) {
+    return '';
+  }
   return res.join('-');
 }
