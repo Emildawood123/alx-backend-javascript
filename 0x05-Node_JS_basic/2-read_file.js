@@ -15,7 +15,10 @@ function countStudents(path) {
   const fieldIndex = output[0].indexOf('field');
   const obj = {};
   for (const j of output) {
-    if (j[fieldIndex] === 'field') {
+    if (j.length === 0) {
+      continue;
+    }
+    if (j[fieldIndex] === 'field' || j[firstNameIndex] === '') {
       continue;
     }
     if (!obj[j[fieldIndex]]) {
