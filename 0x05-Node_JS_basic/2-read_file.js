@@ -19,7 +19,7 @@ function countStudents(path) {
       continue;
     }
     if (!obj[j[fieldIndex]]) {
-      obj[j[fieldIndex]] = { count: 1, lst: [] };
+      obj[j[fieldIndex]] = { count: 1, lst: [j[firstNameIndex]] };
     } else {
       obj[j[fieldIndex]].count = obj[j[fieldIndex]].count + 1;
       obj[j[fieldIndex]].lst.push(j[firstNameIndex]);
