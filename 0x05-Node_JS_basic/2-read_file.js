@@ -9,15 +9,15 @@ function countStudents(path) {
   }
   const output = [];
   for (const i of data) {
+    if (i === '') {
+      continue;
+    }
     output.push(i.split(','));
   }
   const firstNameIndex = output[0].indexOf('firstname');
   const fieldIndex = output[0].indexOf('field');
   const obj = {};
   for (const j of output) {
-    if (j.length === 0) {
-      continue;
-    }
     if (j[fieldIndex] === 'field' || j[firstNameIndex] === '') {
       continue;
     }
@@ -28,7 +28,7 @@ function countStudents(path) {
       obj[j[fieldIndex]].lst.push(j[firstNameIndex]);
     }
   }
-  console.log(`Number of students: ${data.length - 1}`);
+  console.log(`Number of students: ${output.length - 1}`);
   for (const key of Object.keys(obj)) {
     console.log(`Number of students in ${key}: ${obj[key].count}. List: ${obj[key].lst.join(', ')}`);
   }
