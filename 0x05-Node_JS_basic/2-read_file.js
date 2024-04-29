@@ -4,12 +4,13 @@ function countStudents(path) {
   let data;
   try {
     data = fs.readFileSync(path).toString().split('\n');
-  } catch (error){
+  } catch (error) {
     throw new Error('Cannot load the database');
   }
   const output = [];
   for (const i of data) {
     if (i === '') {
+      // eslint-disable-next-line no-continue
       continue;
     }
     output.push(i.split(','));
@@ -19,12 +20,13 @@ function countStudents(path) {
   const obj = {};
   for (const j of output) {
     if (j[fieldIndex] === 'field' || j[firstNameIndex] === '') {
+      // eslint-disable-next-line no-continue
       continue;
     }
     if (!obj[j[fieldIndex]]) {
       obj[j[fieldIndex]] = { count: 1, lst: [j[firstNameIndex]] };
     } else {
-      obj[j[fieldIndex]].count = obj[j[fieldIndex]].count + 1;
+      obj[j[fieldIndex]].count += 1;
       obj[j[fieldIndex]].lst.push(j[firstNameIndex]);
     }
   }
