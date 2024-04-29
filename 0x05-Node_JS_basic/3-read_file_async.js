@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 
-async function studentCount (path) {
+async function countStudents (path) {
   return new Promise((resolve, reject) => {
     const readStream = fs.createReadStream(path);
 
@@ -49,4 +49,4 @@ async function studentCount (path) {
     });
   });
 }
-module.exports = studentCount;
+module.exports = countStudents;
