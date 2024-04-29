@@ -3,3 +3,4 @@ process.stdin.on('data', data => {
   console.log(`Your name is: ${data}`);
   process.exit();
 });
+console.log('This important software is now closing');
