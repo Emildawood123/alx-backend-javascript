@@ -5,7 +5,7 @@ function countStudents(path) {
   const readStream = fs.createReadStream(path);
   const readInterface = readline.createInterface({
     input: readStream
-  })
+  });
   const output = [];
   readInterface.on('line', (line) => {
     const row = line.split(',');
