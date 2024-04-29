@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 
-function studentCount (path) {
+function studentCount(path) {
   const readStream = fs.createReadStream(path);
 
   // Create a readline interface
