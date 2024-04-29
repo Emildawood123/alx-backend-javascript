@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 
-async function countStudents (path) {
+async function countStudents(path) {
   return new Promise((resolve, reject) => {
     const readStream = fs.createReadStream(path);
 

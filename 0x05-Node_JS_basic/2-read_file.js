@@ -1,39 +1,34 @@
 const fs = require('fs');
-const readline = require('readline');
 
-function countStudents(path){
-  const readStream = fs.createReadStream(path);
-  const readInterface = readline.createInterface({
-    input: readStream
-  });
-  const output = [];
-  readInterface.on('line', (line) => {
-    const row = line.split(',');
-    output.push(row);
-  });
-  readInterface.on('close', () => {
-    const numberOfStudent = [];
-    for (const i of output) {
-      if (i[i.length - 1] !== 'field') {
-        numberOfStudent.push(i);
-      }
+function countStudents(path) {
+  fs.readFile(path, (err, buffer) => {
+    if (err) {
+      return new Error('Cannot load the database');
     }
-    console.log(`Number of students: ${numberOfStudent.length}`);
+    const data = buffer.toString().split('\n');
+    const matrix = [];
+    for (const i of data) {
+      const inner = i.split(',');
+      matrix.push(inner);
+    }
+    const firstNameIndex = matrix[0].indexOf('firstname');
+    const fieldIndex = matrix[0].indexOf('field');
+    console.log(`Number of students: ${matrix.length - 1}`);
     const obj = {};
-    for (const j of numberOfStudent) {
-      if (obj[j[j.length - 1]] === undefined) {
-        obj[j[j.length - 1]] = { count: 1, lst: [j[0]] };
+    for (const j of matrix) {
+      if (j[fieldIndex] === 'field') {
+        continue;
+      }
+      if (obj[j[fieldIndex]] === undefined) {
+        obj[j[fieldIndex]] = { count: 1, lst: [j[firstNameIndex]] };
       } else {
-        obj[j[j.length - 1]].count = obj[j[j.length - 1]].count + 1;
-        obj[j[j.length - 1]].count = obj[j[j.length - 1]].lst.push(j[0]);
+        obj[j[fieldIndex]].count = obj[j[fieldIndex]].count + 1;
+        obj[j[fieldIndex]].count = obj[j[fieldIndex]].lst.push(j[firstNameIndex]);
       }
     }
     for (const key of Object.keys(obj)) {
       console.log(`Number of students in ${key}: ${obj[key].count}. List: ${obj[key].lst.join(', ')}`);
     }
-  });
-  readInterface.on('error', () => {
-    throw new Error('Cannot load the database');
   });
 }
 
