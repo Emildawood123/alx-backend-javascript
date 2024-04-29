@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 
-function studentCount(path) {
+function countStudents(path) {
   const readStream = fs.createReadStream(path);
 
   // Create a readline interface
@@ -47,4 +47,4 @@ function studentCount(path) {
   });
 }
 
-module.exports = studentCount;
+module.exports = countStudents;
