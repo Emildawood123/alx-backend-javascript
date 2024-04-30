@@ -1,4 +1,4 @@
-import {readFile} from 'fs'
+import { readFile } from 'fs';
 
 function readDatabase(path) {
   return new Promise((res, rej) => {
@@ -27,15 +27,15 @@ function readDatabase(path) {
         if (obj[j[fieldIndex]] === undefined) {
           obj[j[fieldIndex]] = [j[firstNameIndex]];
         } else {
-          obj[j[fieldIndex]] = obj[j[fieldIndex]].push(j[firstNameIndex]);
+          obj[j[fieldIndex]].push(j[firstNameIndex]);
         }
       }
       res(obj);
-      console.log(obj)
       return obj;
     });
   }).catch(() => {
     throw new Error('Cannot load the database');
   });
 }
-export default readDatabase
+
+export default readDatabase;
