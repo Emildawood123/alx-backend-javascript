@@ -5,5 +5,7 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 app.listen(port, () => {
-  console.log(`app works in prot ${port}`);
+  console.log(`app works in port ${port}`);
 });
+
+module.exports = app;
