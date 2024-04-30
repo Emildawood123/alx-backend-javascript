@@ -1,7 +1,5 @@
 const http = require('http');
 
-const port = 1245;
-const hostname = 'localhost';
 const fs = require('fs');
 
 function countStudents(path) {
@@ -64,8 +62,6 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   }
-});
+}).listen(1245);
 
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+module.exports = app
