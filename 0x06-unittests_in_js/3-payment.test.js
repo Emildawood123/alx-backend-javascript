@@ -1,25 +1,11 @@
-const sendPaymentRequestToApi = require('./3-payment')
+const sinon = require('sinon');
 const Utils = require('./utils');
-const sinon = require('sinon')
-
+const sendPaymentRequestToApi = require('./3-payment');
 describe('sendPaymentRequestToApi', () => {
-    let s;
-    beforeEach(() => {
-        s = sinon.spy(console, 'log')
-    })
-    afterEach(() => {
-        // Restore the default sandbox here
-        sinon.restore();
-      });
-      
-    it('used sinon', () => {
-        sendPaymentRequestToApi(100, 20);
-        sinon.assert.calledWithMatch(consoleSpy, 'The total is: 120');
-        sinon.assert.calledOnce(consoleSpy);
-    })
-    it('used sinon', () => {
-        sendPaymentRequestToApi(50, 40);
-        sinon.assert.calledWithMatch(consoleSpy, 'The total is: 90');
-        sinon.assert.calledOnce(consoleSpy);
-    })
-})
+  it('calculateNumber', () => {
+    const spy = sinon.spy(Utils, 'calculateNumber');
+    sendPaymentRequestToApi(100, 20);
+    sinon.assert.calledWithMatch(spy, 'SUM', 100, 20);
+    spy.restore();
+  });
+});
