@@ -13,8 +13,8 @@ describe('sendPaymentRequestToApi', () => {
       });
       
     it('used sinon', () => {
-        sendPaymentRequestToApi(50, 20);
-        sinon.assert.calledWithMatch(consoleSpy, 'The total is: 70');
+        sendPaymentRequestToApi(100, 20);
+        sinon.assert.calledWithMatch(consoleSpy, 'The total is: 120');
         sinon.assert.calledOnce(consoleSpy);
     })
     it('used sinon', () => {
