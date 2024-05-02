@@ -32,4 +32,10 @@ describe('to test server', () => {
         done()
     })
     })
+    it('/cart/10 get' , (done) => {
+        request('http://127.0.0.1:7865/cart/10', (err, res, body) => {
+        assert.equal(res.body, `Payment methods for cart 10`)
+        done()
+    })
+    })
 })
