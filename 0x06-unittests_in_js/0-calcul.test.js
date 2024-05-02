@@ -15,4 +15,7 @@ describe('calculateNumber', function () {
     it('should return add after rounded', function () {
       assert.strictEqual(calculateNumber(1.5, 3.7), 6);
     });
+    it('should return add after rounded', function () {
+      assert.strictEqual(calculateNumber(5.5, 6.7), 13);
+    });
 });
