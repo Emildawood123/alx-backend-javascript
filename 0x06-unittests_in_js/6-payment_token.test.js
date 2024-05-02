@@ -1,9 +1,10 @@
 const getPaymentTokenFromAPI = require('./6-payment_token');
-const chai = require('chai')
+const { assert } = require('chai')
 describe('getPaymentTokenFromApi', () => {
-    it('should call getPaymentTokenApi', () => {
+    it('should call getPaymentTokenApi', (done) => {
         getPaymentTokenFromAPI(true).then((response) => {
-            chai.assert.deepEqual(response, {data: 'Successful response from the API' })
+            assert.deepEqual(response, {data: 'Successful response from the API' })
         })
+        done()
     });
   });
