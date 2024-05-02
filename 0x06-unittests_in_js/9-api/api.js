@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 })
 app.get('/cart/:id', (req, res) => {
     if (isNaN(parseInt(req.params.id))) {
-        res.statusCode(404)
+        res.sendStatus(404)
     }
     else {
         res.send(`Payment methods for cart ${req.params.id}`)
