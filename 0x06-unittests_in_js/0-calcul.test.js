@@ -3,7 +3,7 @@ const calculateNumber = require('./0-calcul')
 
 
 describe('calculateNumber', function () {
-    it('should return add after rounded', function () {
+    it('rounded', function () {
       assert.strictEqual(calculateNumber(1, 3), 4);
     });
     it('should return add after rounded', function () {
