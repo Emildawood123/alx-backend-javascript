@@ -11,12 +11,12 @@ describe('sendPaymentRequestToApi', () => {
     })
   it('should call with 100, 20', () => {
     sendPaymentRequestToApi(100, 20);
-    sinon.assert.calledWithMatch(consoleSpy, 'The total is: 10');
+    sinon.assert.calledWithMatch(consoleSpy, 'The total is: 120');
     sinon.assert.calledOnce(calculateNumberS, 'SUM', 100, 20);
   });
   it('should call with 10, 10', () => {
     sendPaymentRequestToApi(10, 10);
-    sinon.assert.calledWithMatch(consoleSpy, 'The total is: 10');
+    sinon.assert.calledWithMatch(consoleSpy, 'The total is: 20');
     sinon.assert.calledOnce(calculateNumberS, 'SUM', 10, 10);
   });
 });
